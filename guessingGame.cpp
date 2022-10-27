@@ -6,11 +6,13 @@
 
 #include <iostream>
 #include <random>
+#include <string>
 
 int main() {
     // creating variables
+
+    std::string userNumberAsString;
     int randomNumber;
-    int userNumberAsString;
     int userNumberAsNumber;
 
     // random generator
@@ -25,18 +27,17 @@ int main() {
 
     // process and output
     try {
-        userNumberAsNumber = int(userNumberAsString);
-        if (randomNumber == userNumberAsNumber) {
-                std::cout << "\nYou guessed correctly!";
+        userNumberAsNumber = std::stoi(userNumberAsString);
+        if (userNumberAsNumber == randomNumber) {
+            std::cout << "You guessed right" << std::endl;
         } else {
-            std::cout << "\nYou guessed incorrectly, the number was "
-                << randomNumber << ".";
-
-            std::cout << "\nDone.";
+            std::cout << "You guessed incorrectly, the number was "
+                      << randomNumber << std::endl;
         }
     } catch (std::invalid_argument) {
-        std::cout << "\nThat was not a integer.";
-
-        std::cout << "\nDone.";
+        std::cout << "This was not an integer." << std::endl;
     }
+
+    std::cout << std::endl;
+    std::cout << "Done.";
 }
